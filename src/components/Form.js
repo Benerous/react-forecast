@@ -36,7 +36,7 @@ export default class Form extends Component {
     };
 };
 
-// Видення інформації про помилку
+// Виведення інформації про помилку
 function errorMessage() {
     return (
         <div className="alert alert-danger mx-5" role="alert">
