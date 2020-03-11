@@ -8,7 +8,7 @@ export default class Weather extends Component {
             tempMin, 
             tempMax, 
             description, 
-            weatherIcon 
+            weatherIcon
         } = this.props;
         return (
             <div className="container">

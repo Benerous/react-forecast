@@ -33,7 +33,7 @@ class App extends Component {
     error: false
   };
 
-  // Конвертація градусів Фаренгейта в гредаусів Цельсія
+  // Конвертація градусів Фаренгейта в градусів Цельсія
   convertToCelsius(temperature) {
     let cell = Math.floor(temperature - 273.15);
     return cell;
@@ -88,31 +88,31 @@ class App extends Component {
       const apiCall = await fetch('https://api.openweathermap.org/data/2.5/weather?q='+ city + ',' + country + '&appid=' + apiKey);
     
 
-    const response = await apiCall.json();
+      const response = await apiCall.json();
 
-    console.log(response);
+      console.log(response);
 
-    this.setState({
-      city: '' + response.name + ', ' + response.sys.country,
-      celsius: this.convertToCelsius(response.main.temp),
-      tempMax: this.convertToCelsius(response.main.temp_max),
-      tempMin: this.convertToCelsius(response.main.temp_min),
-      description: response.weather[0].description,
-      error: false
-    });
-
-    this.getWeatherIcon(this.weatherIcon, response.weather[0].id);
-    } else {
       this.setState({
-        city: undefined,
-        icon: undefined,
-        main: undefined,
-        celsius: undefined,
-        tempMax: undefined,
-        tempMin: undefined,
-        description: "",
-        error: true
+        city: '' + response.name + ', ' + response.sys.country,
+        celsius: this.convertToCelsius(response.main.temp),
+        tempMax: this.convertToCelsius(response.main.temp_max),
+        tempMin: this.convertToCelsius(response.main.temp_min),
+        description: response.weather[0].description,
+        error: false
       });
+
+      this.getWeatherIcon(this.weatherIcon, response.weather[0].id);
+      } else {
+        this.setState({
+          city: undefined,
+          icon: undefined,
+          main: undefined,
+          celsius: undefined,
+          tempMax: undefined,
+          tempMin: undefined,
+          description: "",
+          error: true
+        });
     };
   };
 
